@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Gas Supply Bid Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #6c757d;
+            --success-color: #28a745;
+            --accent-color: #f8f9fa;
+            --text-color: #343a40;
+            --light-text: #f8f9fa;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #003b7a);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .bid-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .bid-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .bid-header h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .bid-header p {
+            color: var(--secondary-color);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .bid-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .bid-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem;
+            position: relative;
+        }
+        
+        .card-header h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .card-body {
+            padding: 2rem;
+        }
+        
+        .document-preview {
+            background-color: var(--accent-color);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .preview-placeholder {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+        
+        .preview-text {
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: none;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #004494;
+            box-shadow: 0 4px 8px rgba(0, 86, 179, 0.3);
+        }
+        
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e6f0ff;
+            box-shadow: 0 4px 8px rgba(0, 86, 179, 0.1);
+        }
+        
+        .document-info {
+            margin-top: 2rem;
+            border-top: 1px solid #eee;
+            padding-top: 2rem;
+        }
+        
+        .info-item {
+            display: flex;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #f5f5f5;
+            padding-bottom: 1rem;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            width: 150px;
+            color: var(--secondary-color);
+        }
+        
+        .info-value {
+            flex: 1;
+        }
+        
+        .file-icon {
+            font-size: 5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .separator {
+            height: 1px;
+            background-color: #eee;
+            margin: 2rem 0;
+        }
+        
+        footer {
+            background-color: var(--text-color);
+            color: var(--light-text);
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            color: var(--light-text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: var(--primary-color);
+        }
+        
+        .copyright {
+            margin-top: 1.5rem;
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: var(--border-radius);
+            width: 95%;
+            max-width: 1000px;
+            max-height: 95vh;
+            overflow: auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: #333;
+            cursor: pointer;
+            z-index: 1001;
+            background: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .iframe-container {
+            width: 100%;
+            height: 80vh;
+        }
+        
+        /* Enhanced Mobile Optimization */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.6rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .info-item {
+                flex-direction: column;
+            }
+            
+            .info-label {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+            
+            .card-body {
+                padding: 1.5rem 1rem;
+            }
+            
+            .document-preview {
+                padding: 1.5rem 1rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+            
+            .modal-content {
+                width: 98%;
+                max-height: 98vh;
+            }
+            
+            .iframe-container {
+                height: 75vh;
+            }
+            
+            .footer-links {
+                gap: 1rem;
+                flex-direction: column;
+            }
+        }
+        
+        /* Extra Small Devices */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.4rem;
+            }
+            
+            .subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .bid-header h2 {
+                font-size: 1.5rem;
+            }
+            
+            .card-header h3 {
+                font-size: 1.3rem;
+            }
+            
+            .file-icon {
+                font-size: 4rem;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animated {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        .animated-delay-1 {
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards 0.2s;
+        }
+        
+        .animated-delay-2 {
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards 0.4s;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content animated">
+            <h1>Medical Gases Supply Bid Document</h1>
+            <p class="subtitle">Supply, Delivery, and Unloading of Medical Gases and Providing Maintenance, Services for the Storages of Gas & Gases in Liquefied form for Institutes Under the Ministry of Health</p>
+        </div>
+    </header>
+    
+    <main>
+        <div class="bid-container">
+            <div class="bid-header animated-delay-1">
+                <h2>Bid Document</h2>
+                <p>Access and review the complete bid document for medical gas supply and maintenance services requirements for institutes under the Ministry of Health.</p>
+            </div>
+            
+            <div class="bid-card animated-delay-2">
+                <div class="card-header">
+                    <h3>Medical Gases Supply & Maintenance Bid Document</h3>
+                </div>
+                <div class="card-body">
+                    <div class="document-preview">
+                        <div class="file-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <h4>Bid Document for Medical Gases Supply</h4>
+                        <p class="preview-text">This comprehensive document outlines all specifications, requirements, and terms for the supply, delivery, and maintenance of medical gases for healthcare institutes.</p>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="viewDocBtn">
+                            <i class="fas fa-eye"></i> View Document
+                        </button>
+                        <a href="https://docs.google.com/document/d/1KX6xmispOxrkQCZXxyhAxV-9f5nMkzOi/edit?usp=sharing&ouid=109433459751908723929&rtpof=true&sd=true" class="btn btn-secondary" target="_blank" id="downloadDocBtn">
+                            <i class="fas fa-download"></i> Download Document
+                        </a>
+                    </div>
+                    
+                    <div class="document-info">
+                        <div class="info-item">
+                            <div class="info-label">Document Type:</div>
+                            <div class="info-value">Bid Document</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">File Format:</div>
+                            <div class="info-value">Google Document / PDF</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Issued By:</div>
+                            <div class="info-value">Ministry of Health</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Services:</div>
+                            <div class="info-value">Supply, Delivery, Unloading of Medical Gases & Maintenance Services</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <h3>Ministry of Health</h3>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Contact Us</a>
+                <a href="#" class="footer-link">Procurement Portal</a>
+                <a href="#" class="footer-link">Terms & Conditions</a>
+                <a href="#" class="footer-link">Help & Support</a>
+            </div>
+            <p class="copyright">© 2025 Ministry of Health. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <div class="modal" id="documentModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <div class="iframe-container">
+                <iframe src="https://docs.google.com/document/d/1KX6xmispOxrkQCZXxyhAxV-9f5nMkzOi/preview" width="100%" height="100%" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const viewDocBtn = document.getElementById('viewDocBtn');
+            const modal = document.getElementById('documentModal');
+            const closeModal = document.getElementById('closeModal');
+            
+            viewDocBtn.addEventListener('click', function() {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+            
+            closeModal.addEventListener('click', function() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+            
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Animation on scroll
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.animated-delay-1, .animated-delay-2');
+                
+                elements.forEach(element => {
+                    const position = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (position < windowHeight - 100) {
+                        element.style.opacity = '1';
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Run once on load
+        });
+    </script>
+</body>
+</html>
